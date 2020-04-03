@@ -35,7 +35,7 @@
     ("#CC9393" "#DFAF8F" "#F0DFAF" "#7F9F7F" "#BFEBBF" "#93E0E3" "#94BFF3" "#DC8CC3")))
  '(package-selected-packages
    (quote
-    (ac-emoji company-emoji emoji-display iflipb 0xc x509-mode indent-tools zoom lua-mode nginx-mode keychain-environment treemacs 0blayout w3 w3m salt-mode dracula-theme terraform-mode tabbar pkgbuild-mode groovy-mode dockerfile-mode monokai-alt-theme color-theme monokai-theme counsel swiper ivy helm-projectile helm exec-path-from-shell zop-to-char zenburn-theme which-key volatile-highlights undo-tree super-save smartrep smartparens operate-on-number move-text magit projectile imenu-anywhere hl-todo guru-mode gitignore-mode gitconfig-mode git-timemachine gist expand-region epl editorconfig easy-kill diminish diff-hl discover-my-major crux browse-kill-ring beacon anzu ace-window)))
+    (kubernetes-helm kubernetes highlight-indentation ac-php php-mode ac-emoji company-emoji emoji-display iflipb 0xc x509-mode indent-tools zoom lua-mode nginx-mode keychain-environment treemacs 0blayout w3 w3m salt-mode dracula-theme terraform-mode tabbar pkgbuild-mode groovy-mode dockerfile-mode monokai-alt-theme color-theme monokai-theme counsel swiper ivy helm-projectile helm exec-path-from-shell zop-to-char zenburn-theme which-key volatile-highlights undo-tree super-save smartrep smartparens operate-on-number move-text magit projectile imenu-anywhere hl-todo guru-mode gitignore-mode gitconfig-mode git-timemachine gist expand-region epl editorconfig easy-kill diminish diff-hl discover-my-major crux browse-kill-ring beacon anzu ace-window)))
  '(pdf-view-midnight-colors (quote ("#DCDCCC" . "#383838")))
  '(vc-annotate-background "#2B2B2B")
  '(vc-annotate-color-map
@@ -66,9 +66,11 @@
  ;; If there is more than one, they won't work right.
  )
 (set-frame-font " -xos4-xos4 Terminus-normal-normal-normal-*-18-*-*-*-c-80-iso10646-1")
-(enable-theme 'zenburn)
+                                        ;(enable-theme 'zenburn)
+
 (setq prelude-flyspell nil)
-(setq prelude-theme 'monokai)
+;;(setq prelude-theme 'monokai)
+
 (setq auto-mode-alist (cons '("\\.conf\\.erb$" . conf-mode) auto-mode-alist))
 (setq auto-mode-alist (cons '("\\.vcl\\.erb$" . vcl-mode) auto-mode-alist))
 (setq auto-mode-alist (cons '("\\.tpl$" . html-helper-mode) auto-mode-alist))
@@ -81,15 +83,25 @@
 (global-set-key (kbd "C-.") 'dabbrev-expand)
 ;(global-set-key (kbd "C-.") 'company-complete)
                                         ;(add-to-list 'load-path)(("~/.emacs.d/elpa/dracula-theme-20190107.2016"))
+
+;; Dracula theme - current favorite
 (add-to-list 'load-path "~/.emacs.d/elpa/dracula-theme-20190107.2016")
 (load-theme 'dracula)
-;(global-set-key (kbd "C-DEL") 'dired-up-directory )
+
+                                        ;(global-set-key (kbd "C-DEL") 'dired-up-directory )
+
+;; popup menu shortcut
 (define-key global-map (kbd "C-ø")
   (lambda ()
     (interactive)
     (x-popup-menu (list '(0 0) (selected-frame))
                   (mouse-menu-bar-map))))
+
+;;
+(desktop-save-mode)
+;;
 (server-start)
+;;
 (defun add-mode-line-dirtrack ()
   (add-to-list 'mode-line-buffer-identification
                '(:propertize (" " default-directory " ") face dired-directory)))
